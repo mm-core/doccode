@@ -1,0 +1,12 @@
+node_modules/
+index.ts
+index.tsx
+tsconfig.json
+tslint.json
+feidao.json
+test.js
+tests/*
+*.sh
+*.log
+tslint.json
+tsconfig.json

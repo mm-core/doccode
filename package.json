@@ -1,0 +1,48 @@
+{
+	"name": "@mmstudio/base",
+	"version": "1.0.0",
+	"description": "$desc",
+	"scripts": {
+		"test": "tsc -w",
+		"lint": "eslint ./*.ts",
+		"compile": "tsc",
+		"build": "npm run lint && npm run compile"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://gitee.com/mmstudio/base"
+	},
+	"keywords": [
+		"mm",
+		"mmstudio",
+		"蛮蛮",
+		"蛮蛮工作室",
+		"插件式",
+		"原子操作",
+		"控件",
+		"框架"
+	],
+	"author": {
+		"name": "$user",
+		"email": "$email@xxx.com",
+		"url": "http://www.01feidao.com/"
+	},
+	"maintainers": [
+		{
+			"name": "taoqf",
+			"email": "tao_qiufeng@126.com"
+		}
+	],
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "latest",
+		"@typescript-eslint/parser": "latest",
+		"ava": "latest",
+		"eslint": "latest",
+		"eslint-config-prettier": "latest",
+		"eslint-plugin-import": "latest",
+		"prettier": "latest",
+		"typescript": "next"
+	}
+}
