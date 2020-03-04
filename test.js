@@ -1,6 +1,6 @@
 const test = require('ava');
 
-const { default: t } = require('./');
+const { default: f } = require('./');
 
 test('xxx', async (t) => {
 	t.pass();
