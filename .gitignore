@@ -9,7 +9,4 @@ yarn-error.log*
 node_modules/
 dist/
 
-index.js
-main.js
-*.d.ts
 *.lock
