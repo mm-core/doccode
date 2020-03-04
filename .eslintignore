@@ -1,3 +1,4 @@
+src/
 *.d.ts
 *.js
 dist/
