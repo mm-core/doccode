@@ -43,7 +43,6 @@
 		"eslint": "latest",
 		"eslint-config-prettier": "latest",
 		"eslint-plugin-import": "latest",
-		"prettier": "latest",
 		"typescript": "next"
 	}
 }
