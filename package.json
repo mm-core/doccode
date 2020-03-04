@@ -4,7 +4,7 @@
 	"description": "$desc",
 	"scripts": {
 		"test": "tsc -w",
-		"lint": "eslint ./*.ts",
+		"lint": "eslint ./src/*.ts",
 		"compile": "tsc",
 		"build": "npm run lint && npm run compile"
 	},
@@ -12,7 +12,7 @@
 		"type": "git",
 		"url": "https://gitee.com/mmstudio/base"
 	},
-	"main": "index.js",
+	"main": "dist/index.js",
 	"keywords": [
 		"mm",
 		"mmstudio",

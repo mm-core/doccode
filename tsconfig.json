@@ -1,7 +1,7 @@
 {
 	"exclude": [],
 	"include": [
-		"./"
+		"./src/**/*.ts"
 	],
 	"compileOnSave": false,
 	"compilerOptions": {
@@ -14,7 +14,7 @@
 		"experimentalDecorators": true,
 		"strictNullChecks": true,
 		"noImplicitThis": true,
-		"rootDir": "./",
+		"rootDir": "./src",
 		"outDir": "./dist/",
 		"allowJs": false,
 		"allowUnreachableCode": false,
