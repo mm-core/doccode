@@ -15,7 +15,7 @@
 		"strictNullChecks": true,
 		"noImplicitThis": true,
 		"rootDir": "./",
-		"rootDirs": [],
+		"outDir": "./dist/",
 		"allowJs": false,
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
