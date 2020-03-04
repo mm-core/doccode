@@ -5,7 +5,7 @@
 	],
 	"compileOnSave": false,
 	"compilerOptions": {
-		"module": "esnext",
+		"module": "commonjs",
 		"target": "esnext",
 		"jsx": "react",
 		"noImplicitAny": true,

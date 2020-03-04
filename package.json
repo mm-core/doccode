@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"description": "$desc",
 	"scripts": {
-		"test": "tsc -w",
+		"test": "tsc && ava ./test.js",
+		"watch": "tsc -w & ava --watch ./test.js",
 		"lint": "eslint ./*.ts",
 		"compile": "tsc",
 		"build": "npm run lint && npm run compile"
