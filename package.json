@@ -24,8 +24,7 @@
 	],
 	"author": {
 		"name": "$user",
-		"email": "$email@xxx.com",
-		"url": "http://www.01feidao.com/"
+		"email": "$email@xxx.com"
 	},
 	"maintainers": [
 		{
