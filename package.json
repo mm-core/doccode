@@ -12,6 +12,7 @@
 		"type": "git",
 		"url": "https://gitee.com/mmstudio/base"
 	},
+	"main": "index.js",
 	"keywords": [
 		"mm",
 		"mmstudio",
