@@ -9,7 +9,7 @@
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
 		"build": "npm run lint && npm run compile",
-		"up": "echo 'ok'"
+		"up": "git merge master"
 	},
 	"repository": {
 		"type": "git",
