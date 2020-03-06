@@ -4,7 +4,8 @@
 	"description": "$desc",
 	"scripts": {
 		"test": "tsc -w",
-		"lint": "eslint ./src/*.ts",
+		"clean": "del-cli ./dist/",
+		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
 		"build": "npm run lint && npm run compile"
 	},
@@ -38,6 +39,7 @@
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "latest",
 		"@typescript-eslint/parser": "latest",
+		"del-cli": "latest",
 		"eslint": "latest",
 		"eslint-config-prettier": "latest",
 		"eslint-plugin-import": "latest",
