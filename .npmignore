@@ -3,11 +3,11 @@ node_modules/
 tests/
 src/
 tsconfig.json
-.eslintignore  
-.eslintrc.json  
-.gitignore  
-.npmignore  
-.npmrc  
+.eslintignore 
+.eslintrc.json
+.gitignore
+.npmignore
+.npmrc
 .yarnrc
 *.sh
 *.log
