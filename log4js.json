@@ -1,0 +1,25 @@
+{
+	"appenders": {
+		"out": {
+			"type": "stdout"
+		},
+		"console": {
+			"type": "console"
+		},
+		"dateFile": {
+			"type": "dateFile",
+			"filename": "./logs/mm.log",
+			"maxLogSize": 10240000,
+			"backups": 30
+		}
+	},
+	"categories": {
+		"default": {
+			"appenders": [
+				"console",
+				"dateFile"
+			],
+			"level": "debug"
+		}
+	}
+}

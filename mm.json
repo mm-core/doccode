@@ -1,0 +1,9 @@
+{
+	"port": 8890,
+	"dbs": {
+		"sys": {
+			"type": "postgres",
+			"source": "postgres://mmstudio:Mmstudio123@127.0.0.1:5432/mmstudio"
+		}
+	}
+}

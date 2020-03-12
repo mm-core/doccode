@@ -2,6 +2,9 @@
 node_modules/
 tests/
 src/
+logs/
+log4js.json
+mm.json
 tsconfig.json
 .eslintignore 
 .eslintrc.json
