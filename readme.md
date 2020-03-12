@@ -97,3 +97,40 @@ bar | 6 | 5
 id|text|关键字，如果配置表有该项，则使用该项配置，如没有，则自动创建，也作为前缀
 len|smallint|编码长度，仅包含数字长度，不包含前缀长度，默认为6位
 no|bigint|当前编号，自动创建时默认起始编号为1
+
+## docker-compose
+
+[docker-compose安置](https://download.daocloud.io/Docker_Mirror/Docker_Compose)
+
+```sh
+[sudo] docker-compose -f db.yaml up
+```
+
+db.yaml
+
+```yaml
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - /home/taoqf/data/postgre:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: mmstudio
+      POSTGRES_USER: mmstudio
+      POSTGRES_PASSWORD: Mmstudio123
+    ports:
+      - 5432:5432
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+# networks:
+#   default:
+```
