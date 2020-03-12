@@ -15,6 +15,8 @@
 		"url": "https://gitee.com/mmstudio/base"
 	},
 	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"keywords": [
 		"mm",
 		"mmstudio",
