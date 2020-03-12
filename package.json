@@ -1,6 +1,6 @@
 {
 	"name": "@mmstudio/doccode",
-	"version": "1.0.0",
+	"version": "1.0.202003121549",
 	"description": "编码服务",
 	"scripts": {
 		"test": "tsc && node ./dist/index.js",
