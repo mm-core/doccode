@@ -16,7 +16,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://gitee.com/mmstudio/base"
+		"url": "https://gitee.com/mmstudio/doccode"
 	},
 	"main": "dist/index.js",
 	"module": "dist/index.js",
