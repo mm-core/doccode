@@ -12,8 +12,8 @@
 		"up": "git merge master"
 	},
 	"repository": {
-		"type": "git",
-		"url": "https://gitee.com/mmstudio/base"
+		"type": "https+git",
+		"url": "https://github.com/mm-core/base.git"
 	},
 	"main": "dist/index.js",
 	"module": "dist/index.js",
