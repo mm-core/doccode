@@ -15,8 +15,8 @@
 		"mm-doccode": "./dist/index.js"
 	},
 	"repository": {
-		"type": "git",
-		"url": "https://gitee.com/mmstudio/doccode"
+		"type": "https+git",
+		"url": "https://github.com/mm-core/doccode.git"
 	},
 	"main": "dist/index.js",
 	"module": "dist/index.js",
