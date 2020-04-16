@@ -14,6 +14,7 @@
 		"type": "https+git",
 		"url": "https://github.com/mm-core/base.git"
 	},
+	"homepage": "https://mm-works.github.io",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
