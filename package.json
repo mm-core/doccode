@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "$desc",
 	"scripts": {
-		"test": "tsc -w",
+		"dev": "tsc -w",
 		"clean": "del-cli ./dist/",
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
