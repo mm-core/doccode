@@ -55,6 +55,8 @@ bar | 6 | 5
 }
 ```
 
+注意：目前只支持postgres数据库，使用mysql数据库的情况未经测试。
+
 ### log4js.json
 
 ```json
