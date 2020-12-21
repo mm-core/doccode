@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - /home/taoqf/data/postgre:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_DB: mmstudio
+      POSTGRES_USER: mmstudio
+      POSTGRES_PASSWORD: Mmstudio123
+    ports:
+      - 5432:5432
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

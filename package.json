@@ -3,8 +3,8 @@
 	"version": "1.0.202004170950",
 	"description": "编码服务",
 	"scripts": {
-		"test": "tsc && node ./dist/index.js",
-		"watch": "tsc -w & ava --watch ./tests/*.js",
+		"dev": "tsc && node ./dist/index.js",
+		"test": "tsc -w & ava --watch ./tests/*.js",
 		"clean": "del-cli ./dist/",
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
@@ -44,12 +44,14 @@
 	],
 	"license": "MIT",
 	"dependencies": {
-		"@mmstudio/an000014": "1.0.202004170831",
-		"@mmstudio/config": "1.0.202004161715",
-		"@mmstudio/global": "1.0.202004161717",
+		"@mmstudio/an000036": "1.1.0",
+		"@mmstudio/config": "2.0.1",
+		"@mmstudio/global": "1.1.0",
+		"anylogger": "^1.0.9",
+		"anylogger-log4js": "^0.2.0",
 		"body-parser": "1.19.0",
 		"express": "4.17.1",
-		"log4js": "6.2.0"
+		"log4js": "6.3.0"
 	},
 	"devDependencies": {
 		"@types/body-parser": "latest",

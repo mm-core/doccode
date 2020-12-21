@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import config from '@mmstudio/config';
-import an14 from '@mmstudio/an000014';
+import an36 from '@mmstudio/an000036';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { configure, getLogger } from 'log4js';
+import 'anylogger-log4js';
+import { configure } from 'log4js';
+import anylogger from 'anylogger';
 
 interface IDoccode {
 	id: string;
@@ -11,18 +13,18 @@ interface IDoccode {
 	no: bigint;	// 字段为 bigint
 }
 
-const logger = getLogger();
+const logger = anylogger('doccode');
 let lock = false;
-const db = 'sys';
+const port = config.port;
 
 async function query(name: string, num: number, len: number) {
-	const [[code]] = await an14<IDoccode>(db, [`select id, len, no from doccode where id='${name}' and len=${len}`, []]);
+	const [[code]] = await an36<IDoccode>([`select id, len, no from mmdoccode where id='${name}' and len=${len}`, []]);
 	if (code) {
 		const no = code.no + BigInt(num);
-		await an14(db, [`update doccode set no=${no} where id='${name}' and len=${len}`, []]);
+		await an36([`update mmdoccode set no=${no} where id='${name}' and len=${len}`, []]);
 		return prefix(name, no, code.len, num);
 	}
-	await an14(db, [`insert into doccode (id, len, no) values('${name}', ${len}, ${num})`, []]);
+	await an36([`insert into mmdoccode (id, len, no) values('${name}', ${len}, ${num})`, []]);
 	return prefix(name, BigInt(num), len, num);
 }
 
@@ -52,20 +54,20 @@ async function get_next_no(name: string, num: number, len: number) {
 }
 
 async function init_db() {
-	const sql = `CREATE TABLE IF NOT EXISTS doccode
+	const sql = `CREATE TABLE IF NOT EXISTS mmdoccode
 (
 	id text NOT NULL,
 	len integer,
 	no bigint,
-	CONSTRAINT pk_doccode PRIMARY KEY (id, len)
+	CONSTRAINT pk_mmdoccode PRIMARY KEY (id, len)
 )
 WITH (oids = false);
 
-COMMENT ON TABLE doccode IS '编码表';
-COMMENT ON COLUMN doccode.id IS '名称';
-COMMENT ON COLUMN doccode.len IS '编码数字位长度';
-COMMENT ON COLUMN doccode.no IS '编号';`;
-	await an14(db, [sql, []]);
+COMMENT ON TABLE mmdoccode IS '编码表';
+COMMENT ON COLUMN mmdoccode.id IS '名称';
+COMMENT ON COLUMN mmdoccode.len IS '编码数字位长度';
+COMMENT ON COLUMN mmdoccode.no IS '编号';`;
+	await an36([sql, []]);
 }
 
 function init_http() {
@@ -139,7 +141,7 @@ function init_http() {
 			}
 		}
 	});
-	server.listen(config.port);
+	server.listen(port);
 }
 
 async function main() {
@@ -151,7 +153,7 @@ async function main() {
 	logger.warn('Starting doccode service...........^v^');
 	await init_db();
 	init_http();
-	logger.warn(`doccode service is started at port ${config.port}...........^v^`);
+	logger.warn(`doccode service is started at port ${port}...........^v^`);
 }
 
 main();

@@ -51,14 +51,14 @@ bar | 6 | 5
 ```json
 {
 	"port": 8890,
-	"dbs": {
-		"sys": {
-			"type": "postgres",
-			"source": "postgres://mmstudio:Mmstudio123@127.0.0.1:5432/mmstudio"
-		}
+	"db": {
+		"type": "postgres",
+		"source": "postgres://mmstudio:Mmstudio123@127.0.0.1:5432/mmstudio"
 	}
 }
 ```
+
+注意：目前只支持postgres数据库，使用mysql数据库的情况未经测试。
 
 ### log4js.json
 
