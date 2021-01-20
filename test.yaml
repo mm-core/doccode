@@ -1,23 +1,11 @@
 version: '3.7'
 
 services:
-  postgres:
-    image: postgres
-    container_name: postgres
-    volumes:
-      - /home/taoqf/work/data/postgre:/var/lib/postgresql/data
-    restart: always
-    environment:
-      POSTGRES_DB: mmstudio
-      POSTGRES_USER: mmstudio
-      POSTGRES_PASSWORD: Mmstudio123
-    ports:
-      - 5432:5432
   mariadb:
     image: mariadb
-    container_name: mariadb
+    container_name: db
     restart: always
-    volumes:  mariadb:
+    volumes:  mariadb
     image: mariadb
     container_name: mariadb
     restart: always
@@ -39,8 +27,8 @@ services:
     ports:
       - 3306:3306
   adminer:
-    container_name: adminer
+    container_name: adminer2
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8080

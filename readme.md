@@ -8,7 +8,7 @@
 
 ## 注意
 
-服务不可部署多个实例
+该服务**不可部署多个实例**
 
 另外，由于该服务生成编号时为了保证生成的编号唯一，需要排队处理大量的并发请求，所以在使用中，请一定避免多次调用。
 
@@ -25,7 +25,7 @@ curl http://127.0.0.1:8890 -d 'name=foo&num=1'
 # ["foo000001"]
 curl http://127.0.0.1:8890 -d 'name=foo&num=3'
 # ["bar000001","bar000002","bar000003"]
-curl http://127.0.0.1:8890 --header "Content-Type:application/json" -d '{"name":"foo","num:1}'
+curl http://127.0.0.1:8890 --header "Content-Type:application/json" -d '{"name":"foo","num":1}'
 # ["foo000002"]
 curl http://127.0.0.1:8890 -d 'name=20200204&num=10&len=3'
 # ["20200204001","20200204002","20200204003","20200204004","20200204005","20200204006","20200204007","20200204008","20200204009","20200204010"]
@@ -46,16 +46,33 @@ bar | 6 | 5
 
 ### mm.json
 
-以下，`sys`为固定配置名
+postgre
 
 ```json
 {
 	"port": 8890,
-	"db": "postgres://mmstudio:Mmstudio123@127.0.0.1:5432/mmstudio"
+	"dbconfig": {
+		"client": "pg",
+		"connection": "postgres://mmstudio:Mmstudio123@127.0.0.1:5432/mmstudio"
+	}
 }
 ```
 
-注意：目前只支持postgres数据库，使用mysql数据库的情况未经测试。
+mysql/mariadb
+
+```json
+{
+	"port": 8890,
+{
+	"port": 8890,
+	"dbconfig": {
+		"client": "mysql",
+		"connection": "mysql://mmstudio:Mmstudio123@127.0.0.1:3306/mmstudio?connectionLimit=5"
+	}
+}}
+```
+
+另外，也支持mssql，oracle，和sqlite。
 
 ### log4js.json
 

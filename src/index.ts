@@ -1,37 +1,57 @@
 #!/usr/bin/env node
 import config from '@mmstudio/config';
-import an36 from '@mmstudio/an000036';
 import express from 'express';
 import bodyParser from 'body-parser';
 import 'anylogger-log4js';
 import { configure } from 'log4js';
 import anylogger from 'anylogger';
+import an49 from '@mmstudio/an000049';
 
 interface IDoccode {
-	id: string;
-	len: number;
-	no: bigint;	// 字段为 bigint
+	/**
+	 * 编码代号
+	 */
+	f001: string;
+	/**
+	 * 编码数字位长度
+	 */
+	f002: number;
+	/**
+	 * 当前编号
+	 */
+	f003: number;	// 字段为 bigint
 }
 
 const logger = anylogger('doccode');
 let lock = false;
-const port = config.port;
+const port = config.port as number;
+const tbname = 'mmtb003';
 
 async function query(name: string, num: number, len: number) {
-	const [[code]] = await an36<IDoccode>([`select id, len, no from mmdoccode where id='${name}' and len=${len}`, []]);
-	if (code) {
-		const no = code.no + BigInt(num);
-		await an36([`update mmdoccode set no=${no} where id='${name}' and len=${len}`, []]);
-		return prefix(name, no, code.len, num);
+	const db = an49();
+	const tb1 = db<IDoccode>(tbname);
+	const r001 = await tb1.select('f001', 'f002', 'f003').where('f001', name).andWhere('f002', len).first();
+	logger.debug(tbname, r001);
+	if (r001) {
+		const no = Number(r001.f003) + num;
+		const tb2 = db<IDoccode>(tbname);
+		await tb2.update('f003', no).where('f001', name).andWhere('f002', len);
+		return prefix(name, no, r001.f002, num);
 	}
-	await an36([`insert into mmdoccode (id, len, no) values('${name}', ${len}, ${num})`, []]);
-	return prefix(name, BigInt(num), len, num);
+	const tb3 = db<IDoccode>(tbname);
+	await tb3.insert({
+		f001: name,
+		f002: len,
+		f003: num
+	});
+	return prefix(name, num, len, num);
 }
 
-function prefix(pre: string, stop: bigint, len: number, num: number) {
+function prefix(pre: string, stop: number, len: number, num: number) {
 	return Array<number>(num).fill(0).map((_v, i) => {
-		const n = stop - BigInt(i);
-		return pre + (Array<string>(len).join('0') + n.toString()).slice(-len);
+		const n = stop - i;
+		// return pre + (Array<string>(len).join('0') + n.toString()).slice(-len);
+		return pre + n.toString().padStart(len, '0');
 	}).reverse();
 }
 
@@ -54,20 +74,14 @@ async function get_next_no(name: string, num: number, len: number) {
 }
 
 async function init_db() {
-	const sql = `CREATE TABLE IF NOT EXISTS mmdoccode
-(
-	id text NOT NULL,
-	len integer,
-	no bigint,
-	CONSTRAINT pk_mmdoccode PRIMARY KEY (id, len)
-)
-WITH (oids = false);
-
-COMMENT ON TABLE mmdoccode IS '编码表';
-COMMENT ON COLUMN mmdoccode.id IS '名称';
-COMMENT ON COLUMN mmdoccode.len IS '编码数字位长度';
-COMMENT ON COLUMN mmdoccode.no IS '编号';`;
-	await an36([sql, []]);
+	const db = an49();
+	// 在有些时候，管理员分配的数据库操作权限不能够创建表，需要预先把表创建好.
+	await db.schema.createTableIfNotExists('mmtb003', (builder) => {
+		builder.comment('编码表');
+		builder.string('f001').comment('编码代号').notNullable();
+		builder.integer('f002').comment('编码数字位长度');
+		builder.bigInteger('f003').comment('当前编号');
+	});
 }
 
 function init_http() {
@@ -104,6 +118,9 @@ function init_http() {
 
 	const server = app.post('/', async (req, res) => {
 		const headers = req.headers;
+		logger.debug('headers', headers);
+		logger.debug('body', req.body);
+		logger.debug('query', req.query);
 		const body = req.body as { name: string; num: string; len: string };
 		const req_query = req.query as { name: string; num: string; len: string };
 		const name = body.name || req_query.name || req.params.name;
@@ -120,7 +137,7 @@ function init_http() {
 				throw new Error('num required');
 			}
 			const no = await get_next_no(name, num ? parseInt(num, 10) : 1, len ? parseInt(len, 10) : 6);
-			logger.info(`Result:${no} for ${name}`);
+			logger.info('Result:', no, 'for', name);
 			res.json(no);
 		} catch (err) {
 			logger.trace(err);
@@ -156,4 +173,4 @@ async function main() {
 	logger.warn(`doccode service is started at port ${port}...........^v^`);
 }
 
-main();
+void main();
