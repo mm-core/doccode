@@ -15,7 +15,7 @@
 ## 部署
 
 1. 生成配置表，根据实际部署情况修改
-1. 安装`yarn add @mmstudio/doccode`
+1. 安装`yarn add @mmstudio/doccode pg`(`pg` for PostgreSQL, `mysql` for MySQL/MariaDB, `sqlite3` for SQLite3, `oracledb` for Oracle, or `mssql` for MSSQL )
 1. 启动`./node_moduels/.bin/mm-doccode`
 
 ## Useage
@@ -61,8 +61,6 @@ postgre
 mysql/mariadb
 
 ```json
-{
-	"port": 8890,
 {
 	"port": 8890,
 	"dbconfig": {
