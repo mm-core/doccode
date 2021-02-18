@@ -3,6 +3,12 @@
 		"es6": true,
 		"node": true
 	},
+	"settings": {
+		"react": {
+			"pragma": "React",
+			"version": "detect"
+		}
+	},
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -12,14 +18,17 @@
 		"plugin:import/warnings",
 		"plugin:import/typescript",
 		"prettier",
-		"prettier/@typescript-eslint"
+		"prettier/@typescript-eslint",
+		"eslint-config-ts-lambdas",
+		"eslint-config-ts-lambdas/react"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"ecmaVersion": 2018,
+		"ecmaVersion": 2020,
 		"sourceType": "module",
 		"ecmaFeatures": {
-			"impliedStrict": true
+			"impliedStrict": true,
+			"jsx": true
 		},
 		"project": "tsconfig.json"
 	},
@@ -28,6 +37,27 @@
 		"@typescript-eslint"
 	],
 	"rules": {
+		"indent": [
+			"error",
+			"tab"
+		],
+		"@typescript-eslint/indent": [
+			"error",
+			"tab"
+		],
+		"@typescript-eslint/member-delimiter-style": [
+			"error",
+			{
+				"multiline": {
+					"delimiter": "semi",
+					"requireLast": true
+				},
+				"singleline": {
+					"delimiter": "semi",
+					"requireLast": true
+				}
+			}
+		],
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"arrow-parens": [
 			"off"
