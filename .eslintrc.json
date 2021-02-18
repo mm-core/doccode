@@ -37,13 +37,13 @@
 		"@typescript-eslint"
 	],
 	"rules": {
-		"indent": [
-			"error",
-			"tab"
-		],
+		"indent": "off",
 		"@typescript-eslint/indent": [
 			"error",
-			"tab"
+			"tab",
+			{
+				"SwitchCase": 1
+			}
 		],
 		"@typescript-eslint/member-delimiter-style": [
 			"error",
