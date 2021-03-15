@@ -15,16 +15,16 @@
 		"type": "https+git",
 		"url": "https://github.com/mm-core/base.git"
 	},
-	"homepage": "https://mm-works.github.io",
+	"homepage": "https://01factory.github.io",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"keywords": [
 		"mm",
 		"mmstudio",
-		"蛮蛮",
-		"蛮蛮工作室",
-		"插件式",
+		"01",
+		"零壹",
+		"微工厂",
 		"原子操作",
 		"控件",
 		"框架"
