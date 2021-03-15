@@ -1,2 +1,1 @@
-export default function fun() {
-}
+export default function fun() { }

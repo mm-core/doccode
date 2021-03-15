@@ -18,7 +18,6 @@
 		"plugin:import/warnings",
 		"plugin:import/typescript",
 		"prettier",
-		"prettier/@typescript-eslint",
 		"eslint-config-ts-lambdas",
 		"eslint-config-ts-lambdas/react"
 	],
