@@ -121,8 +121,8 @@ function init_http() {
 		logger.debug('headers', headers);
 		logger.debug('body', req.body);
 		logger.debug('query', req.query);
-		const body = req.body as { name: string; num: string; len: string };
-		const req_query = req.query as { name: string; num: string; len: string };
+		const body = req.body as { name: string; num: string; len: string; };
+		const req_query = req.query as { name: string; num: string; len: string; };
 		const name = body.name || req_query.name || req.params.name;
 		const len = body.len || req_query.len || req.params.len;
 		const num = body.num || req_query.num || req.params.num;
