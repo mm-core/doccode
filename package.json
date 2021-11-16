@@ -1,6 +1,6 @@
 {
 	"name": "@mmstudio/doccode",
-	"version": "1.2.0",
+	"version": "2.0.0",
 	"description": "编码服务",
 	"scripts": {
 		"dev": "tsc -w & ava --watch ./tests/*.js",
@@ -74,8 +74,8 @@
 		"eslint-plugin-react": "latest",
 		"minio": "latest",
 		"mysql": "^2.18.1",
-		"pg": "^8.5.1",
 		"np": "latest",
+		"pg": "^8.5.1",
 		"prettier": "latest",
 		"typescript": "next"
 	}
