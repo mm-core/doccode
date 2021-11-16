@@ -1,63 +1,41 @@
 {
-	"env": {
-		"es6": true,
-		"node": true
-	},
-	"settings": {
-		"react": {
-			"pragma": "React",
-			"version": "detect"
-		}
-	},
+	"parser": "@typescript-eslint/parser",
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/recommended-requiring-type-checking",
-		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:react/recommended",
 		"plugin:import/errors",
 		"plugin:import/warnings",
 		"plugin:import/typescript",
-		"prettier",
-		"eslint-config-ts-lambdas",
-		"eslint-config-ts-lambdas/react"
+		"prettier"
 	],
-	"parser": "@typescript-eslint/parser",
+	"env": {
+		"es6": true,
+		"browser": true,
+		"jest": true,
+		"node": true
+	},
 	"parserOptions": {
 		"ecmaVersion": 2020,
 		"sourceType": "module",
 		"ecmaFeatures": {
-			"impliedStrict": true,
-			"jsx": true
+			"impliedStrict": true
 		},
 		"project": "tsconfig.json"
 	},
 	"plugins": [
 		"import",
-		"@typescript-eslint"
+		"react"
 	],
 	"rules": {
-		"indent": "off",
-		"@typescript-eslint/indent": [
-			"error",
-			"tab",
-			{
-				"SwitchCase": 1
-			}
-		],
-		"@typescript-eslint/member-delimiter-style": [
-			"error",
-			{
-				"multiline": {
-					"delimiter": "semi",
-					"requireLast": true
-				},
-				"singleline": {
-					"delimiter": "semi",
-					"requireLast": true
-				}
-			}
-		],
-		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"no-empty-pattern": "warn",
+		"react/react-in-jsx-scope": 0,
+		"react/display-name": 0,
+		"react/prop-types": 0,
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"@typescript-eslint/indent": 0,
+		"@typescript-eslint/member-delimiter-style": 0,
+		"@typescript-eslint/no-var-requires": 0,
 		"arrow-parens": [
 			"off"
 		],
@@ -216,41 +194,50 @@
 		],
 		"@typescript-eslint/consistent-type-assertions": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
-		"@typescript-eslint/explicit-member-accessibility": "error",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/interface-name-prefix": "off",
-		"@typescript-eslint/no-empty-function": [
-			"warn",
-			{
-				"allow": [
-					"constructors"
-				]
-			}
-		],
 		"@typescript-eslint/no-empty-interface": "off",
-		"@typescript-eslint/no-explicit-any": "error",
-		"@typescript-eslint/no-inferrable-types": [
-			"warn",
-			{
-				"ignoreParameters": true,
-				"ignoreProperties": true
-			}
-		],
-		"@typescript-eslint/no-misused-promises": [
-			"error",
-			{
-				"checksVoidReturn": false
-			}
-		],
 		"@typescript-eslint/no-namespace": "off",
 		"@typescript-eslint/no-non-null-assertion": "off",
 		"@typescript-eslint/no-parameter-properties": "off",
-		"@typescript-eslint/no-unused-vars": [
-			"warn",
-			{
-				"args": "none"
-			}
-		],
+		"no-unused-vars": "off",
 		"@typescript-eslint/no-use-before-define": "off",
 		"@typescript-eslint/unbound-method": "off" // Too many bugs right now: https://github.com/typescript-eslint/typescript-eslint/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+unbound-method
+	},
+	"settings": {
+		// "propWrapperFunctions": [
+		// 	// The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+		// 	"forbidExtraProps",
+		// 	{
+		// 		"property": "freeze",
+		// 		"object": "Object"
+		// 	},
+		// 	{
+		// 		"property": "myFavoriteWrapper"
+		// 	}
+		// ],
+		"componentWrapperFunctions": [
+			// The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
+			"observer", // `property`
+			{
+				"property": "styled"
+			}, // `object` is optional
+			{
+				"property": "observer",
+				"object": "Mobx"
+			},
+			{
+				"property": "observer",
+				"object": "<pragma>"
+			} // sets `object` to whatever value `settings.react.pragma` is set to
+		],
+		"linkComponents": [
+			// Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+			"Hyperlink",
+			{
+				"name": "Link",
+				"linkAttribute": "to"
+			}
+		]
 	}
 }

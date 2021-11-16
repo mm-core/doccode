@@ -11,38 +11,39 @@ interface IDoccode {
 	/**
 	 * 编码代号
 	 */
-	f001: string;
+	name: string;
 	/**
 	 * 编码数字位长度
 	 */
-	f002: number;
+	len: number;
 	/**
 	 * 当前编号
 	 */
-	f003: number;	// 字段为 bigint
+	code: number;	// 字段为 bigint
 }
 
 const logger = anylogger('doccode');
 let lock = false;
 const port = config.port as number;
-const tbname = 'mmtb003';
+const tbname = 'mmdoccode';
+
+function tb() {
+	const db = an49();
+	return db<IDoccode>(tbname);
+}
 
 async function query(name: string, num: number, len: number) {
-	const db = an49();
-	const tb1 = db<IDoccode>(tbname);
-	const r001 = await tb1.select('f001', 'f002', 'f003').where('f001', name).andWhere('f002', len).first();
+	const r001 = await tb().select('name', 'len', 'code').where('name', name).andWhere('len', len).first();
 	logger.debug(tbname, r001);
 	if (r001) {
-		const no = Number(r001.f003) + num;
-		const tb2 = db<IDoccode>(tbname);
-		await tb2.update('f003', no).where('f001', name).andWhere('f002', len);
-		return prefix(name, no, r001.f002, num);
+		const no = Number(r001.code) + num;
+		await tb().update('code', no).where('name', name).andWhere('len', len);
+		return prefix(name, no, r001.len, num);
 	}
-	const tb3 = db<IDoccode>(tbname);
-	await tb3.insert({
-		f001: name,
-		f002: len,
-		f003: num
+	await tb().insert({
+		name,
+		len,
+		code: num
 	});
 	return prefix(name, num, len, num);
 }
@@ -76,11 +77,11 @@ async function get_next_no(name: string, num: number, len: number) {
 async function init_db() {
 	const db = an49();
 	// 在有些时候，管理员分配的数据库操作权限不能够创建表，需要预先把表创建好.
-	await db.schema.createTableIfNotExists('mmtb003', (builder) => {
+	await db.schema.createTableIfNotExists(tbname, (builder) => {
 		builder.comment('编码表');
-		builder.string('f001').comment('编码代号').notNullable();
-		builder.integer('f002').comment('编码数字位长度');
-		builder.bigInteger('f003').comment('当前编号');
+		builder.string('name').comment('编码代号').notNullable();
+		builder.integer('len').comment('编码数字位长度');
+		builder.bigInteger('code').comment('当前编号');
 	});
 }
 
