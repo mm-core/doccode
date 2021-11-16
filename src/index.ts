@@ -125,8 +125,8 @@ function init_http() {
 		const body = req.body as { name: string; num: string; len: string; };
 		const req_query = req.query as { name: string; num: string; len: string; };
 		const name = body.name || req_query.name || req.params.name;
-		const len = body.len || req_query.len || req.params.len;
-		const num = body.num || req_query.num || req.params.num;
+		const len = body.len || req_query.len || req.params.len || '0';
+		const num = body.num || req_query.num || req.params.num || '0';
 		const tm = new Date();
 		const dbgmsg = `name=${name},num:${num},headers=${JSON.stringify(headers)},body=${JSON.stringify(body)}`;
 		logger.info(`Message incomming:${dbgmsg}`);
@@ -134,10 +134,12 @@ function init_http() {
 			if (!name) {
 				throw new Error('name required');
 			}
-			if (!num) {
-				throw new Error('num required');
+			const no = await (() => {
+			if (Number( num) <= 0) {
+				return [] as string[];
 			}
-			const no = await get_next_no(name, num ? parseInt(num, 10) : 1, len ? parseInt(len, 10) : 6);
+			return get_next_no(name, parseInt(num, 10), parseInt(len, 10));
+			})();
 			logger.info('Result:', no, 'for', name);
 			res.json(no);
 		} catch (err) {
