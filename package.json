@@ -4,7 +4,6 @@
 	"description": "编码服务",
 	"scripts": {
 		"dev": "tsc -w & ava --watch ./tests/*.js",
-		"test": "tsc && node ./dist/index.js",
 		"clean": "del-cli ./dist/",
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
