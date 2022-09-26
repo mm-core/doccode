@@ -3,7 +3,7 @@
 	"version": "2.0.1",
 	"description": "编码服务",
 	"scripts": {
-		"dev": "tsc -w & ava --watch ./tests/*.js",
+		"dev": "tsc && node ./dist/index.js",
 		"clean": "del-cli ./dist/",
 		"lint": "eslint ./src/**/*.ts",
 		"compile": "tsc",
@@ -49,9 +49,9 @@
 		"registry": "https://registry.npmjs.org"
 	},
 	"dependencies": {
-		"@mmstudio/an000049": "1.0.1",
-		"@mmstudio/config": "3.0.0",
-		"@mmstudio/global": "1.1.0",
+		"@mmstudio/an000049": "^3.0.0",
+		"@mmstudio/an000060": "^3.0.0",
+		"@next/env": "^12.3.1",
 		"anylogger": "^1.0.10",
 		"anylogger-log4js": "^0.2.0",
 		"body-parser": "1.19.0",
