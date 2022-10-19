@@ -10,7 +10,7 @@
 		"build": "npm run clean && npm run lint && npm run compile",
 		"up": "git pull git@github.com:mm-core/base.git cjs",
 		"start": "node ./dist/index.js",
-		"release": "np"
+		"release": "standard-version && git push --follow-tags origin main && npm publish"
 	},
 	"bin": {
 		"mm-doccode": "dist/index.js"
@@ -49,14 +49,14 @@
 		"registry": "https://registry.npmjs.org"
 	},
 	"dependencies": {
-		"@mmstudio/an000049": "^3.0.0",
-		"@mmstudio/an000060": "^3.0.0",
-		"@next/env": "^12.3.1",
-		"anylogger": "^1.0.10",
-		"anylogger-log4js": "^0.2.0",
-		"body-parser": "1.19.0",
-		"express": "4.17.1",
-		"log4js": "6.3.0"
+		"@mmstudio/an000049": "3.0.0",
+		"@mmstudio/an000060": "3.0.0",
+		"@next/env": "12.3.1",
+		"anylogger": "1.0.10",
+		"anylogger-log4js": "0.2.0",
+		"body-parser": "1.20.1",
+		"express": "4.18.2",
+		"log4js": "6.7.0"
 	},
 	"devDependencies": {
 		"@types/body-parser": "latest",
@@ -73,9 +73,9 @@
 		"eslint-plugin-prettier": "latest",
 		"eslint-plugin-react": "latest",
 		"minio": "latest",
-		"mysql": "^2.18.1",
-		"np": "latest",
-		"pg": "^8.5.1",
+		"mysql": "latest",
+		"standard-version": "latest",
+		"pg": "latest",
 		"prettier": "latest",
 		"typescript": "next"
 	}
