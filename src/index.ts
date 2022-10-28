@@ -56,6 +56,7 @@ async function get_next_no(name: string, num: number, len: number) {
 	lock = true;
 	logger.debug('locked', name);
 	try {
+		await init_db();
 		return await query(name, num, len);
 	} finally {
 		lock = false;
@@ -170,7 +171,6 @@ async function main() {
 
 	configure('./log4js.json');
 	logger.warn('Starting doccode service...........^v^');
-	await init_db();
 	init_http();
 }
 

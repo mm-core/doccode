@@ -35,8 +35,11 @@ export default function tbDoccode() {
 		// raw<T = any>(sql: string, ...bindings: any[]) {
 		// 	return db.raw(sql, ...bindings) as unknown as T;
 		// },
-		create() {
-			return db.schema.createTableIfNotExists(tableName, (builder) => {
+		async create() {
+			if (await db.schema.hasTable(tableName)) {
+				return true;
+			}
+			return db.schema.createTable(tableName, (builder) => {
 				builder.comment('编码表');
 				builder.string('name').comment('编码代号').notNullable();
 				builder.integer('len').comment('编码数字位长度');
