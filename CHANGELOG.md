@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/mm-core/doccode/compare/v3.0.1...v3.0.2) (2022-10-28)
+
+
+### Bug Fixes
+
+* tale is not exist ([7be29fa](https://github.com/mm-core/doccode/commit/7be29fa207118a9244ec5296644b9163af76b362))
+
 ### [3.0.1](https://github.com/mm-core/doccode/compare/v3.0.0...v3.0.1) (2022-10-19)
 
 
