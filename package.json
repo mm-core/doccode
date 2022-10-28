@@ -10,7 +10,7 @@
 		"build": "npm run clean && npm run lint && npm run compile",
 		"up": "git pull git@github.com:mm-core/base.git cjs",
 		"start": "node ./dist/index.js",
-		"release": "standard-version && git push --follow-tags origin main && npm publish"
+		"release": "yarn build && standard-version && git push --follow-tags origin main && npm publish"
 	},
 	"bin": {
 		"mm-doccode": "dist/index.js"
