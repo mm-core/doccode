@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@mmstudio/an000049': ^3.0.0
+  '@mmstudio/an000049': ^3.1.0
   '@mmstudio/an000060': ^4.0.3
   '@next/env': 12.3.1
   '@types/body-parser': latest
@@ -31,7 +31,7 @@ specifiers:
   typescript: latest
 
 dependencies:
-  '@mmstudio/an000049': 3.0.0_p5pwu3hbitodihmmfwbuv6sb2u
+  '@mmstudio/an000049': 3.1.0_p5pwu3hbitodihmmfwbuv6sb2u
   '@mmstudio/an000060': 4.0.3_p5pwu3hbitodihmmfwbuv6sb2u
   '@next/env': 12.3.1
   anylogger: 1.0.10
@@ -127,8 +127,8 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /@mmstudio/an000049/3.0.0_p5pwu3hbitodihmmfwbuv6sb2u:
-    resolution: {integrity: sha512-wKCWeDjb96cgOe7976lTm2lzZJ2DrIkKE7qK/FsuFkHjiYHWW0RdXtgV02CrPLTUvp6dULI9rqY403o3dU0hKQ==}
+  /@mmstudio/an000049/3.1.0_p5pwu3hbitodihmmfwbuv6sb2u:
+    resolution: {integrity: sha512-wXwfm2s8Avy6KzdiHHuPUlIyTMsqx69eRgQ3WpQFHlBPQktkeCCjVJ8oJuxkKYrWuI23lGnQJ9G5moxL0apMPg==}
     peerDependencies:
       '@next/env': '*'
       anylogger: '*'
@@ -154,7 +154,7 @@ packages:
   /@mmstudio/an000060/4.0.3_p5pwu3hbitodihmmfwbuv6sb2u:
     resolution: {integrity: sha512-qKL5NoTGPt8sfZobYAex+37803XbSLLf3CyCKAROrkmrIuaO7IlpDIsqAxTT6LsAJgIlOwWqEWTnGMOry6eXDw==}
     dependencies:
-      '@mmstudio/an000049': 3.0.0_p5pwu3hbitodihmmfwbuv6sb2u
+      '@mmstudio/an000049': 3.1.0_p5pwu3hbitodihmmfwbuv6sb2u
       '@mmstudio/an000059': 1.0.3
     transitivePeerDependencies:
       - '@next/env'
