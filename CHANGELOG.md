@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.4](https://github.com/mm-core/doccode/compare/v3.0.3...v3.0.4) (2022-12-12)
+
+
+### Bug Fixes
+
+* remove react lint config ([78f853c](https://github.com/mm-core/doccode/commit/78f853c1e0ff9ceaf763af2f683a480590d6c24a))
+* update deps ([53790ff](https://github.com/mm-core/doccode/commit/53790ffae4007e5077d24ccb9283e5474756d1fb))
+* update deps ([92e0546](https://github.com/mm-core/doccode/commit/92e054645bb97d7a90375abf3df9e88442645241))
+
 ### [3.0.3](https://github.com/mm-core/doccode/compare/v3.0.2...v3.0.3) (2022-10-28)
 
 
